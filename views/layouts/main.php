@@ -57,7 +57,8 @@ PublicAsset::register($this);
                             <li><a href="<?= Url::toRoute(['site/login'])?>">Вход</a></li>
                             <li><a href="<?= Url::toRoute(['site/signup'])?>">Регистрация</a></li>
                         <?php else: ?>
-                            <li><a href="<?= Url::toRoute(['advert/index'])?>">Мои обьявления</a></li>
+                            <li><a href="<?= Url::toRoute(['cabinet/myadvert'])?>">Мои обьявления</a></li>
+                            <li><a href="<?= Url::toRoute(['cabinet/index'])?>">Личный кабинет</a></li>
                             <li><?= Html::beginForm(['/site/logout'], 'post')
                             . Html::submitButton(
                                 'Logout (' . Yii::$app->user->identity->username . ')',

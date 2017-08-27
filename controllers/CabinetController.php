@@ -35,6 +35,12 @@ class CabinetController extends Controller
      */
     public function actionIndex()
     {
+        echo 'экшн индекс кабинет контроллера';
+       return true;
+    }
+
+    public function actionMyadvert()
+    {
         $searchModel = new SearchAdvert();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
@@ -121,4 +127,6 @@ class CabinetController extends Controller
             throw new NotFoundHttpException('The requested page does not exist.');
         }
     }
+
+
 }

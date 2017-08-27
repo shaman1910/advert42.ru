@@ -3,6 +3,7 @@
 namespace app\models;
 
 use Yii;
+use yii\db\ActiveRecord;
 
 /**
  * This is the model class for table "advert".
@@ -12,7 +13,7 @@ use Yii;
  * @property string $description
  * @property integer $user_id
  */
-class Advert extends \yii\db\ActiveRecord
+class Advert extends ActiveRecord
 {
     /**
      * @inheritdoc
