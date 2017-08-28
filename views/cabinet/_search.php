@@ -4,7 +4,7 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
 /* @var $this yii\web\View */
-/* @var $model app\models\SearchAdvert */
+/* @var $model app\models\AdvertSearch */
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
@@ -21,7 +21,17 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'description') ?>
 
-    <?= $form->field($model, 'user_id') ?>
+    <?= $form->field($model, 'content') ?>
+
+    <?= $form->field($model, 'price') ?>
+
+    <?php // echo $form->field($model, 'date') ?>
+
+    <?php // echo $form->field($model, 'viewed') ?>
+
+    <?php // echo $form->field($model, 'user_id') ?>
+
+    <?php // echo $form->field($model, 'status') ?>
 
     <div class="form-group">
         <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>

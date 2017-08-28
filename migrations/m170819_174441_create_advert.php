@@ -8,9 +8,15 @@ class m170819_174441_create_advert extends Migration
     {
             $this->createTable('advert', [
                 'id' => $this->primaryKey(),
-                'title' => $this->string(),
-                'description' => $this->text(),
-                'user_id' => $this->integer()
+                'title'=>$this->string(),
+                'description'=>$this->text(),
+                'content'=>$this->text(),
+                'date'=>$this->date(),
+                'image'=>$this->string(),
+                'viewed'=>$this->integer(),
+                'user_id'=>$this->integer(),
+                'status'=>$this->integer(),
+                'category_id'=>$this->integer(),
             ]);
     }
 

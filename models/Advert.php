@@ -3,7 +3,6 @@
 namespace app\models;
 
 use Yii;
-use yii\db\ActiveRecord;
 
 /**
  * This is the model class for table "advert".
@@ -11,9 +10,14 @@ use yii\db\ActiveRecord;
  * @property integer $id
  * @property string $title
  * @property string $description
+ * @property string $content
+ * @property double $price
+ * @property string $date
+ * @property integer $viewed
  * @property integer $user_id
+ * @property integer $status
  */
-class Advert extends ActiveRecord
+class Advert extends \yii\db\ActiveRecord
 {
     /**
      * @inheritdoc
@@ -29,8 +33,10 @@ class Advert extends ActiveRecord
     public function rules()
     {
         return [
-            [['description'], 'string'],
-            [['user_id'], 'integer'],
+            [['description', 'content'], 'string'],
+            [['price'], 'number'],
+            [['date'], 'safe'],
+            [['viewed', 'user_id', 'status'], 'integer'],
             [['title'], 'string', 'max' => 255],
         ];
     }
@@ -44,7 +50,12 @@ class Advert extends ActiveRecord
             'id' => 'ID',
             'title' => 'Title',
             'description' => 'Description',
+            'content' => 'Content',
+            'price' => 'Price',
+            'date' => 'Date',
+            'viewed' => 'Viewed',
             'user_id' => 'User ID',
+            'status' => 'Status',
         ];
     }
 }

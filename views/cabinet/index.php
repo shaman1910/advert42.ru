@@ -4,7 +4,7 @@ use yii\helpers\Html;
 use yii\grid\GridView;
 
 /* @var $this yii\web\View */
-/* @var $searchModel app\models\SearchAdvert */
+/* @var $searchModel app\models\AdvertSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
 $this->title = 'Adverts';
@@ -27,7 +27,12 @@ $this->params['breadcrumbs'][] = $this->title;
             'id',
             'title',
             'description:ntext',
-            'user_id',
+            'content:ntext',
+            'price',
+            // 'date',
+            // 'viewed',
+            // 'user_id',
+            // 'status',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

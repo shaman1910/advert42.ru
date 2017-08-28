@@ -4,7 +4,7 @@ namespace app\controllers;
 
 use Yii;
 use app\models\Advert;
-use app\models\SearchAdvert;
+use app\models\AdvertSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -35,13 +35,7 @@ class CabinetController extends Controller
      */
     public function actionIndex()
     {
-        echo 'экшн индекс кабинет контроллера';
-       return true;
-    }
-
-    public function actionMyadvert()
-    {
-        $searchModel = new SearchAdvert();
+        $searchModel = new AdvertSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -128,5 +122,9 @@ class CabinetController extends Controller
         }
     }
 
+    public function actionSetCategory($id)
+    {
+        echo $id;
 
+    }
 }

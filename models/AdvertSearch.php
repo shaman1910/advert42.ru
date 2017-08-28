@@ -8,9 +8,9 @@ use yii\data\ActiveDataProvider;
 use app\models\Advert;
 
 /**
- * SearchAdvert represents the model behind the search form about `app\models\Advert`.
+ * AdvertSearch represents the model behind the search form about `app\models\Advert`.
  */
-class SearchAdvert extends Advert
+class AdvertSearch extends Advert
 {
     /**
      * @inheritdoc
@@ -18,8 +18,9 @@ class SearchAdvert extends Advert
     public function rules()
     {
         return [
-            [['id', 'user_id'], 'integer'],
-            [['title', 'description'], 'safe'],
+            [['id', 'viewed', 'user_id', 'status'], 'integer'],
+            [['title', 'description', 'content', 'date'], 'safe'],
+            [['price'], 'number'],
         ];
     }
 
@@ -60,11 +61,16 @@ class SearchAdvert extends Advert
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
+            'price' => $this->price,
+            'date' => $this->date,
+            'viewed' => $this->viewed,
             'user_id' => $this->user_id,
+            'status' => $this->status,
         ]);
 
         $query->andFilterWhere(['like', 'title', $this->title])
-            ->andFilterWhere(['like', 'description', $this->description]);
+            ->andFilterWhere(['like', 'description', $this->description])
+            ->andFilterWhere(['like', 'content', $this->content]);
 
         return $dataProvider;
     }
