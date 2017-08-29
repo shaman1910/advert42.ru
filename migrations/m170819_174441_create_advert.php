@@ -16,6 +16,7 @@ class m170819_174441_create_advert extends Migration
                 'viewed'=>$this->integer(),
                 'user_id'=>$this->integer(),
                 'status'=>$this->integer(),
+                'price'=>$this->integer(),
                 'category_id'=>$this->integer(),
             ]);
     }

@@ -30,8 +30,7 @@ AppAsset::register($this);
     <?php
     $menuItems = [
         ['label' => 'Главная', 'url' => ['/admin/default/index']],
-        ['label' => 'Все обьявления', 'url' => ['/admin/advert/index']],
-        ['label' => 'Создать обьявление', 'url' => ['/admin/advert/create']],
+        ['label' => 'Категории', 'url' => ['/admin/category/index']],
         ['label' => 'Пользователи', 'url' => ['/rbac/default/index']],
         Yii::$app->user->isGuest ? (
         ['label' => 'Войти', 'url' => ['/site/login']]

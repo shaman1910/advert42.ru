@@ -3,6 +3,7 @@
 namespace app\models;
 
 use Yii;
+use yii\db\ActiveRecord;
 
 /**
  * This is the model class for table "advert".
@@ -17,7 +18,7 @@ use Yii;
  * @property integer $user_id
  * @property integer $status
  */
-class Advert extends \yii\db\ActiveRecord
+class Advert extends ActiveRecord
 {
     /**
      * @inheritdoc
@@ -58,4 +59,13 @@ class Advert extends \yii\db\ActiveRecord
             'status' => 'Status',
         ];
     }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getCategory()
+    {
+        return $this->hasOne(Category::className(), ['id' => 'category_id']);
+    }
+
 }
