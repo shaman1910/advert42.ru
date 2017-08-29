@@ -204,30 +204,12 @@
                     <aside class="widget border pos-padding">
                         <h3 class="widget-title text-uppercase text-center">Категории</h3>
                         <ul>
+                            <?php foreach ($categories as $category):?>
                             <li>
-                                <a href="#">Food & Drinks</a>
-                                <span class="post-count pull-right"> (2)</span>
+                                <a href="#"> <?= $category->title ?> </a>
+                                <span class="post-count pull-right">  (<?= $category->getAdverts()->count();?>)</span>
                             </li>
-                            <li>
-                                <a href="#">Travel</a>
-                                <span class="post-count pull-right"> (2)</span>
-                            </li>
-                            <li>
-                                <a href="#">Business</a>
-                                <span class="post-count pull-right"> (2)</span>
-                            </li>
-                            <li>
-                                <a href="#">Story</a>
-                                <span class="post-count pull-right"> (2)</span>
-                            </li>
-                            <li>
-                                <a href="#">DIY & Tips</a>
-                                <span class="post-count pull-right"> (2)</span>
-                            </li>
-                            <li>
-                                <a href="#">Lifestyle</a>
-                                <span class="post-count pull-right"> (2)</span>
-                            </li>
+                            <?php endforeach;?>
                         </ul>
                     </aside>
                     <aside class="widget">

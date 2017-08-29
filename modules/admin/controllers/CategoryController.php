@@ -61,6 +61,15 @@ class CategoryController extends Controller
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
+
+    public function actionSetCategory($id)
+    {
+        $advert = $this->findModel($id);
+
+        var_dump($advert->category);
+    }
+
+
     public function actionCreate()
     {
         $model = new Category();

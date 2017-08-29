@@ -41,4 +41,9 @@ class Category extends ActiveRecord
             'title' => 'Title',
         ];
     }
+
+    public function getAdverts()
+    {
+        return $this->hasMany(Advert::className(), ['category_id' => 'id']);
+    }
 }
