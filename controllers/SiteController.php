@@ -5,6 +5,7 @@ namespace app\controllers;
 use app\models\Advert;
 use app\models\Category;
 use Yii;
+use yii\data\Pagination;
 use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\Response;
@@ -67,8 +68,17 @@ class SiteController extends Controller
 
         $categories = Category::find()->all();
 
+        $query = Advert::find()->where(['status' => 1]);
+        $countQuery = clone $query;
+        $pages = new Pagination(['totalCount' => $countQuery->count(1), 'pageSize' => 2]);
+        $adverts = $query->offset($pages->offset)
+            ->limit($pages->limit)
+            ->all();
+
         return $this->render('index',[
-            'categories'=>$categories
+            'adverts' => $adverts,
+            'categories'=>$categories,
+            'pages' => $pages
             ]);
     }
 
