@@ -34,10 +34,12 @@ class Advert extends ActiveRecord
     public function rules()
     {
         return [
+            [['title', 'description', 'content', 'price'], 'required'],
             [['description', 'content'], 'string'],
             [['price'], 'number'],
-            [['date'], 'safe'],
-            [['viewed', 'user_id', 'status'], 'integer'],
+            [['date'], 'date', 'format'=>'php:Y-m-d'],
+            [['date'], 'default', 'value' => date('Y-m-d')],
+            [['status'], 'default', 'value' => 1],
             [['title'], 'string', 'max' => 255],
         ];
     }
@@ -73,4 +75,14 @@ class Advert extends ActiveRecord
         return $this->hasOne(User::className(), ['id'=>'user_id']);
     }
 
+
+    public static function getPopular($id)
+    {
+        return Advert::find()->orderBy('viewed desc')->limit($id)->all();
+    }
+
+    public function getDate($format)
+    {
+        return Yii::$app->formatter->asDate($this->date, $format);
+    }
 }

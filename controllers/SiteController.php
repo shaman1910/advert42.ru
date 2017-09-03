@@ -67,18 +67,22 @@ class SiteController extends Controller
     {
 
         $categories = Category::find()->all();
+        $populars = Advert::getPopular(3);
 
         $query = Advert::find()->where(['status' => 1]);
         $countQuery = clone $query;
-        $pages = new Pagination(['totalCount' => $countQuery->count(1), 'pageSize' => 2]);
+        $pages = new Pagination(['totalCount' => $countQuery->count(), 'pageSize' => 3]);
         $adverts = $query->offset($pages->offset)
             ->limit($pages->limit)
             ->all();
 
+
         return $this->render('index',[
             'adverts' => $adverts,
             'categories'=>$categories,
-            'pages' => $pages
+            'pages' => $pages,
+            'populars' => $populars,
+
             ]);
     }
 
@@ -160,6 +164,12 @@ class SiteController extends Controller
 
     public function actionView()
     {
-        return $this->render('view');
+        $categories = Category::find()->all();
+        $populars = Advert::getPopular(3);
+
+        return $this->render('view', [
+        'categories'=>$categories,
+        'populars' => $populars,
+            ]);
     }
 }

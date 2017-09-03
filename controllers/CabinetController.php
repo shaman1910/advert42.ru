@@ -2,9 +2,11 @@
 
 namespace app\controllers;
 
+use app\models\Category;
 use Yii;
 use app\models\Advert;
 use app\models\AdvertSearch;
+use yii\helpers\ArrayHelper;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -65,11 +67,14 @@ class CabinetController extends Controller
     {
         $model = new Advert();
 
+
+
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('create', [
                 'model' => $model,
+
             ]);
         }
     }
