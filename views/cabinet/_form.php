@@ -16,12 +16,13 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'description')->textarea(['rows' => 6]) ?>
+    <?= $form->field($model, 'description')->textarea(['rows' => 2]) ?>
 
-    <?= $form->field($model, 'content')->textarea(['rows' => 6]) ?>
+    <?= $form->field($model, 'content')->textarea(['rows' => 7]) ?>
 
     <?= $form->field($model, 'price')->textInput() ?>
 
+    <?= $form->field($model, 'image')->fileInput(['maxlength' => true]) ?>
 
 
 

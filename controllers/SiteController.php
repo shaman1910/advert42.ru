@@ -162,14 +162,16 @@ class SiteController extends Controller
     }
 
 
-    public function actionView()
+    public function actionView($id)
     {
+        $advert = Advert::findOne($id);
         $categories = Category::find()->all();
         $populars = Advert::getPopular(3);
 
         return $this->render('view', [
         'categories'=>$categories,
         'populars' => $populars,
+        'advert' => $advert,
             ]);
     }
 }
