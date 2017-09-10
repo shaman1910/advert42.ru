@@ -168,6 +168,8 @@ class SiteController extends Controller
         $categories = Category::find()->all();
         $populars = Advert::getPopular(3);
 
+        $advert->viewedCounter();
+
         return $this->render('view', [
         'categories'=>$categories,
         'populars' => $populars,

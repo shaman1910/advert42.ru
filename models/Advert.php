@@ -37,10 +37,15 @@ class Advert extends ActiveRecord
             [['title', 'description', 'content', 'price'], 'required'],
             [['description', 'content'], 'string'],
             [['price'], 'number'],
-            [['date'], 'date', 'format'=>'php:Y-m-d'],
+            [['date'], 'date', 'format' => 'php:Y-m-d'],
             [['date'], 'default', 'value' => date('Y-m-d')],
             [['status'], 'default', 'value' => 1],
             [['title'], 'string', 'max' => 255],
+            [['viewed'], 'default', 'value' => 0],
+            [['category_id'], 'default', 'value' => 1],
+            [['user_id'], 'default', 'value' => Yii::$app->user->identity->id],
+
+
         ];
     }
 
@@ -72,7 +77,7 @@ class Advert extends ActiveRecord
 
     public function getAuthor()
     {
-        return $this->hasOne(User::className(), ['id'=>'user_id']);
+        return $this->hasOne(User::className(), ['id' => 'user_id']);
     }
 
 
@@ -85,4 +90,22 @@ class Advert extends ActiveRecord
     {
         return Yii::$app->formatter->asDate($this->date, $format);
     }
+
+    public function saveImage($filename)
+    {
+        $this->image = $filename;
+        return $this->save(false);
+    }
+
+    public function getImage()
+    {
+        return ($this->image) ? '/uploads/' . $this->image : '/no-image.png';
+    }
+
+    public function viewedCounter()
+    {
+        $this->viewed += 1;
+        return $this->save(false);
+    }
+
 }

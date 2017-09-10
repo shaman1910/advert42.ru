@@ -22,9 +22,6 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'price')->textInput() ?>
 
-    <?= $form->field($model, 'image')->fileInput(['maxlength' => true]) ?>
-
-
 
 
 

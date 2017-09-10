@@ -8,7 +8,7 @@ use yii\widgets\LinkPager; ?>
                 <?php foreach ($adverts as $advert):?>
                 <article class="post">
                     <div class="post-thumb">
-                        <a href="<?= Url::toRoute(['site/view', 'id'=>$advert->id]);?>"><img src="/public/images/blog-1.jpg" alt=""></a>
+                        <a href="<?= Url::toRoute(['site/view', 'id'=>$advert->id]);?>"><img src="<?= $advert->getImage() ?>" alt=""></a>
 
                         <a href="<?= Url::toRoute(['site/view', 'id'=>$advert->id]);?>" class="post-thumb-overlay text-center">
                             <div class="text-uppercase text-center">View Post</div>
@@ -34,7 +34,7 @@ use yii\widgets\LinkPager; ?>
                         <div class="social-share">
                             <span class="social-share-title pull-left text-capitalize">Разместил <a href="#"><?= $advert->author->username; ?></a> On <?= $advert->getDate('medium') ?></span>
                             <ul class="text-center pull-right">
-                                <li><a class="s-facebook" href="#"><i class="fa fa-eye"></i></a></li><?=$advert->viewed; ?>
+                                <li></a></li><?=$advert->price;?> <i class="fa fa-rub"></i>
                             </ul>
                         </div>
                     </div>
@@ -67,7 +67,7 @@ use yii\widgets\LinkPager; ?>
 
                                 <div class="media">
                                     <div class="media-left">
-                                        <a href="#" class="popular-img"><img src="/public/images/r-p.jpg" alt="">
+                                        <a href="#" class="popular-img"><img src="<?= $advert->getImage() ?>" alt="">
                                             <div class="p-overlay"></div>
                                         </a>
                                     </div>

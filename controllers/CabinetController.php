@@ -3,13 +3,16 @@
 namespace app\controllers;
 
 use app\models\Category;
+use app\models\ImageUpload;
 use Yii;
 use app\models\Advert;
 use app\models\AdvertSearch;
 use yii\helpers\ArrayHelper;
 use yii\web\Controller;
+use yii\web\ForbiddenHttpException;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\web\UploadedFile;
 
 /**
  * CabinetController implements the CRUD actions for Advert model.
@@ -85,9 +88,18 @@ class CabinetController extends Controller
      * @param integer $id
      * @return mixed
      */
+
     public function actionUpdate($id)
     {
+
+
         $model = $this->findModel($id);
+
+        if (!Yii::$app->user->can('updateOwnAdvert', ['post'=>$model]) && (!Yii::$app->user->can('updateAdvert', ['post'=>$model])))
+
+        {
+            throw new ForbiddenHttpException("Ошибка доступа", 1);
+        }
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
@@ -106,6 +118,14 @@ class CabinetController extends Controller
      */
     public function actionDelete($id)
     {
+        $model = $this->findModel($id);
+
+        if (!Yii::$app->user->can('updateOwnAdvert', ['post'=>$model]) && (!Yii::$app->user->can('updateAdvert', ['post'=>$model])))
+
+        {
+            throw new ForbiddenHttpException("Ошибка доступа", 1);
+        }
+
         $this->findModel($id)->delete();
 
         return $this->redirect(['index']);
@@ -133,5 +153,21 @@ class CabinetController extends Controller
        $advert = $this->findModel($id);
 
        var_dump($advert->category);
+    }
+
+    public function actionSetImage($id)
+    {
+        $model = new ImageUpload;
+
+        if (Yii::$app->request->isPost)
+        {
+            $advert = $this->findModel($id);
+
+            $file = UploadedFile::getInstance($model, 'image');
+
+            $advert->saveImage($model->uploadFile($file, $advert->image));
+        }
+
+        return $this->render('image', ['model'=>$model]);
     }
 }

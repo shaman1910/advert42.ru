@@ -5,7 +5,7 @@
             <div class="col-md-8">
                 <article class="post">
                     <div class="post-thumb">
-                        <img src="/public/images/blog-1.jpg" alt=""></a>
+                        <img src="<?= $advert->getImage() ?>" alt=""></a>
                     </div>
                     <div class="post-content">
                         <header class="entry-header text-center text-uppercase">
@@ -77,7 +77,7 @@
 
                             <div class="media">
                                 <div class="media-left">
-                                    <a href="#" class="popular-img"><img src="/public/images/r-p.jpg" alt="">
+                                    <a href="#" class="popular-img"><img src="<?= $advert->getImage() ?>" alt="">
                                         <div class="p-overlay"></div>
                                     </a>
                                 </div>

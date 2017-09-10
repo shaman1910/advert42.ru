@@ -74,6 +74,7 @@ class CategoryController extends Controller
     {
         $model = new Category();
 
+
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
