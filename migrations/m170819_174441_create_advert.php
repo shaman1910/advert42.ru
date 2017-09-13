@@ -13,6 +13,7 @@ class m170819_174441_create_advert extends Migration
                 'content'=>$this->text(),
                 'date'=>$this->date(),
                 'image'=>$this->string(),
+                'phone'=>$this->string(),
                 'viewed'=>$this->integer(),
                 'user_id'=>$this->integer(),
                 'status'=>$this->integer(),

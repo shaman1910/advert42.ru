@@ -165,7 +165,10 @@ class CabinetController extends Controller
 
             $file = UploadedFile::getInstance($model, 'image');
 
-            $advert->saveImage($model->uploadFile($file, $advert->image));
+            if($advert->saveImage($model->uploadFile($file, $advert->image)))
+            {
+                return $this->redirect(['view','id'=>$advert->id]);
+            }
         }
 
         return $this->render('image', ['model'=>$model]);

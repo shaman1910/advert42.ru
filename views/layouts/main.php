@@ -50,6 +50,7 @@ PublicAsset::register($this);
                     <li><a href="/admin">админ панель</a>
 
                     </li>
+
                 </ul>
                 <div class="i_con">
                     <ul class="nav navbar-nav text-uppercase">
@@ -72,8 +73,13 @@ PublicAsset::register($this);
             <!-- /.navbar-collapse -->
         </div>
     </div>
-    <!-- /.container-fluid -->
 </nav>
+
+    <!-- /.container-fluid -->
+
+
+
+
 
 
 

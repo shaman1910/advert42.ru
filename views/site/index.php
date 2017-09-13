@@ -3,8 +3,14 @@ use yii\widgets\LinkPager; ?>
 
 <div class="main-content">
     <div class="container">
+
          <div class="row">
+
             <div class="col-md-8">
+                <form class="well form-search">
+                    <input type="text">
+                    <button type="submit" class="btn">Поиск</button>
+                </form>
                 <?php foreach ($adverts as $advert):?>
                 <article class="post">
                     <div class="post-thumb">
@@ -18,7 +24,7 @@ use yii\widgets\LinkPager; ?>
                         <header class="entry-header text-center text-uppercase">
                             <h6><a href="#"><?= $advert->category->title; ?></a></h6>
 
-                            <h1 class="entry-title"><a href="blog.html"><?= $advert->title; ?></a></h1>
+                            <h1 class="entry-title"><a href="#"><?= $advert->title; ?></a></h1>
 
 
                         </header>
@@ -34,7 +40,7 @@ use yii\widgets\LinkPager; ?>
                         <div class="social-share">
                             <span class="social-share-title pull-left text-capitalize">Разместил <a href="#"><?= $advert->author->username; ?></a> On <?= $advert->getDate('medium') ?></span>
                             <ul class="text-center pull-right">
-                                <li></a></li><?=$advert->price;?> <i class="fa fa-rub"></i>
+                                <li></a></li>Цена <?=$advert->price;?> <i class="fa fa-rub"></i>
                             </ul>
                         </div>
                     </div>
@@ -63,8 +69,6 @@ use yii\widgets\LinkPager; ?>
                         <h3 class="widget-title text-uppercase text-center">Популярные обьявления</h3>
                         <?php foreach ($populars as $advert):?>
                             <div class="thumb-latest-posts">
-
-
                                 <div class="media">
                                     <div class="media-left">
                                         <a href="#" class="popular-img"><img src="<?= $advert->getImage() ?>" alt="">

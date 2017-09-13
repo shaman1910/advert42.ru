@@ -3,6 +3,10 @@
     <div class="container">
         <div class="row">
             <div class="col-md-8">
+                <form class="well form-search">
+                    <input type="text">
+                    <button type="submit" class="btn">Поиск</button>
+                </form>
                 <article class="post">
                     <div class="post-thumb">
                         <img src="<?= $advert->getImage() ?>" alt=""></a>
@@ -18,42 +22,16 @@
                         <div class="entry-content">
                             <?= $advert->content ?>
                         </div>
-                        <div class="decoration">
-                            <a href="#" class="btn btn-default">Decoration</a>
-                            <a href="#" class="btn btn-default">Decoration</a>
+                        <div class="social-share">
+                            <span class="social-share-title pull-left">Телефон <?= $advert->phone; ?></span>
+                            <ul class="text-center pull-right">
+                                <li></a></li>Цена <?=$advert->price;?> <i class="fa fa-rub"></i>
+                            </ul>
                         </div>
 
 
                     </div>
                 </article>
-
-
-
-                <div class="bottom-comment"><!--bottom comment-->
-                    <h4>3 comments</h4>
-
-                    <div class="comment-img">
-                        <img class="img-circle" src="/public/images/comment-img.jpg" alt="">
-                    </div>
-
-                    <div class="comment-text">
-                        <a href="#" class="replay btn pull-right"> Replay</a>
-                        <h5>Rubel Miah</h5>
-
-                        <p class="comment-date">
-                            December, 02, 2015 at 5:57 PM
-                        </p>
-
-
-                        <p class="para">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
-                            diam nonumy
-                            eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
-                            voluptua. At vero eos et cusam et justo duo dolores et ea rebum.</p>
-                    </div>
-                </div>
-                <!-- end bottom comment-->
-
-
 
             </div>
             <div class="col-md-4" data-sticky_column>
